@@ -21,6 +21,7 @@ def isWinner(x, nums):
             c += 1
         sieve[i] = c
 
+<<<<<<< HEAD
     winner = ''
     player1 = 0
     for n in nums:
@@ -32,3 +33,27 @@ def isWinner(x, nums):
     else:
         winner = "Ben"
     return winner
+=======
+    primes = [0, 0, 2]
+
+    calculate_primes(max(nums), primes)
+
+    for round in range(x):
+        sum_options = sum((i != 0 and i <= nums[round])
+                          for i in primes[:nums[round] + 1])
+
+        if (sum_options % 2):
+            winner = "Maria"
+        else:
+            winner = "Ben"
+
+        if winner:
+            players_wins[winner] += 1
+
+    if players_wins["Maria"] > players_wins["Ben"]:
+        return "Maria"
+    elif players_wins["Ben"] > players_wins["Maria"]:
+        return "Ben"
+
+    return None
+>>>>>>> 1094894bf2b937db84dd8fcb06e04689610a6317
